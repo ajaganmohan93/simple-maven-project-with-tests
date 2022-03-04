@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        stage('Git Clone'){
+            steps{
+                  git 'https://github.com/ajaganmohan93/simple-maven-project-with-tests.git'
+            }
+        }
+        stage('Maven Build'){
+            steps{
+                  sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+        }
+    }
+}
